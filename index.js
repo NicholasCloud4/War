@@ -50,6 +50,14 @@ function handleDrawCards() {
                 button.classList.add("disabled")
                 button.style.pointerEvents = "none"
             }
+
+            if (data.remaining === 0) {
+                if (computerScore > myScore) {
+                    document.getElementById("who-won").textContent = "Computer wins the game!"
+                } else if (myScore > computerScore) {
+                    document.getElementById("who-won").textContent = "You win the game!"
+                }
+            }
         })
 
 }
@@ -57,21 +65,7 @@ function handleDrawCards() {
 document.getElementById("draw-cards").addEventListener("click", handleDrawCards)
 
 
-/**
- * Challenge:
- * 
- * Keep score! Every time the computer wins a hand, add a point to
- * the computer's score. Do the same for every time you win a hand.
- * If it's a war, no points are awarded to either player. If it's 
- * a war (same card values), no one is awarded points.
- * 
- * Display the computer's score above the top card, display your
- * own score BELOW the bottom card.
- * 
- * Track the scores in a global variable defined at the top of this file
- * 
- * Add to the global scores inside the `determineCardWinner` function below.
- */
+
 
 function compareCards(card1, card2) {
     const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
@@ -97,6 +91,12 @@ function compareCards(card1, card2) {
         return "WAR!!!"
     }
 }
+/**
+ * Challenge:
+ * 
+ * Display the final winner in the header at the top by
+ * replacing the text of the h2.
+ */
 
 
 

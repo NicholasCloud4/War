@@ -1,61 +1,90 @@
 body {
-    background-color: #f2f2f2;
     font-family: Arial, sans-serif;
-    height: 100vh;
+    text-align: center;
     margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
 button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
     background-color: #4CAF50;
-    border: none;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    border: none;
     cursor: pointer;
-    border-radius: 4px;
-}
-
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
     background-color: #45a049;
 }
 
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #4CAF50;
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
 #card-container {
-    position: relative;
-    height: 100vh;
-}
-
-#card {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#card,
 #card2 {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 300px;
+    width: 150px;
+    height: 220px;
+    margin: 0 10px;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#card:hover,
-#card2:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+#who-won,
+#computer-score,
+#my-score,
+#cards-remaining {
+    display: inline-block;
+    margin: 20px auto;
+    width: 200px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#who-won {
+    color: #4CAF50;
+}
+
+#computer-score,
+#my-score {
+    color: #666;
+}
+
+#cards-remaining {
+    color: #999;
 }
