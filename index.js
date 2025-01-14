@@ -1,5 +1,20 @@
 let deckId = ""
 
+function updateButtonState() {
+    const button = document.getElementById("draw-cards");
+    if (!deckId) {
+        button.disabled = true;
+        button.classList.add("disabled");
+        button.style.pointerEvents = "none";
+    } else {
+        button.disabled = false;
+        button.classList.remove("disabled");
+        button.style.pointerEvents = "auto";
+    }
+}
+updateButtonState()
+
+
 function handleClick() {
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
         .then(res => res.json())
@@ -7,6 +22,8 @@ function handleClick() {
             console.log(data)
             deckId = data.deck_id
             document.getElementById("cards-remaining").innerHTML = `Cards Remaining: ${data.remaining}`
+
+            updateButtonState()
         })
 }
 
@@ -16,10 +33,12 @@ document.getElementById("new-deck").addEventListener("click", handleClick)
 /**
  * Challenge:
  * 
- * Display the number of remaining cards when we request a new deck, 
- * not just when we draw the 2 cards.
+ * Disable the Draw button when we have no more cards to draw from
+ * in the deck.
  * 
- * Hint: check the data coming back from when we get a new deck.
+ * Disable both the functionality of the button (i.e. change
+ * `disabled` to true on the button) AND the styling (i.e. add
+ * a `disabled` CSS class to make it look unclickable)
  */
 
 function handleDrawCards() {
@@ -34,6 +53,13 @@ function handleDrawCards() {
             document.getElementById("who-won").innerHTML = winnerText
 
             document.getElementById("cards-remaining").innerHTML = `Cards Remaining: ${data.remaining}`
+
+            const button = document.getElementById("draw-cards");
+            if (data.remaining === 0) {
+                button.disabled = true
+                button.classList.add("disabled")
+                button.style.pointerEvents = "none"
+            }
         })
 
 }

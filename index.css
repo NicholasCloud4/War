@@ -19,6 +19,11 @@ button {
     border-radius: 4px;
 }
 
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 button:hover {
     background-color: #45a049;
 }
