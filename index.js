@@ -11,28 +11,25 @@ function handleClick() {
 
 document.getElementById("new-deck").addEventListener("click", handleClick)
 
-
-/**
- * Challenge
- * 
- * Task: Using the saved deckId, draw 2 new cards from the deck
- * 
- * Docs for original Deck of Cards API: https://deckofcardsapi.com/#draw-card
- * BaseUrl you'll use: https://apis.scrimba.com/deckofcards/api/deck/
- * (that will replace the base url of https://deckofcardsapi.com/api/deck/)
- * that you'll see in the deck of cards API docs.
- * 
- * 1. Create a new button that, when clicked, draws 2 cards from the deckId
- * you have saved
- *      Note: you'll need to get a new deck every time you refresh the page,
- *      since you're only saving your deckId in a local variable right now
- * 2. Log those 2 cards to the console
- */
-
 function handleDrawCards() {
     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
         .then(res => res.json())
-        .then(data => console.log(data.cards))
+        .then(data => {
+            console.log(data.cards)
+            document.getElementById("card").src = data.cards[0].image
+            document.getElementById("card2").src = data.cards[1].image
+        })
+
 }
 
 document.getElementById("draw-cards").addEventListener("click", handleDrawCards)
+
+/**
+ * Challenge:
+ * 
+ * Display the images of the 2 cards you drew in the browser.
+ * Probably best to use `innerHTML` to insert a couple <img> elements
+ * on the page.
+ */
+
+
