@@ -6,6 +6,7 @@ function handleClick() {
         .then(data => {
             console.log(data)
             deckId = data.deck_id
+            document.getElementById("cards-remaining").innerHTML = `Cards Remaining: ${data.remaining}`
         })
 }
 
@@ -15,9 +16,10 @@ document.getElementById("new-deck").addEventListener("click", handleClick)
 /**
  * Challenge:
  * 
- * Display the number of cards remaining in the deck on the page
- * Hint: Check the data that comes back when we draw 2 new cards
- * to see if there's anything helpful there for this task (😉)
+ * Display the number of remaining cards when we request a new deck, 
+ * not just when we draw the 2 cards.
+ * 
+ * Hint: check the data coming back from when we get a new deck.
  */
 
 function handleDrawCards() {
